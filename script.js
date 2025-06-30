@@ -1,18 +1,19 @@
-//your JS code here. If required.
 document.getElementById("votingForm").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent default form submission
 
-  const name = document.getElementById("name").value.trim();
-  const age = parseInt(document.getElementById("age").value.trim());
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
 
-  if (!name || isNaN(age)) {
+  if (name.trim() === "" || age.trim() === "") {
     alert("Please enter valid details.");
     return;
   }
 
+  const ageNumber = parseInt(age);
+
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (age >= 18) {
+      if (ageNumber >= 18) {
         resolve();
       } else {
         reject();
