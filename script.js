@@ -2,18 +2,19 @@ document.getElementById("votingForm").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent default form submission
 
   const name = document.getElementById("name").value.trim();
-  const age = document.getElementById("age").value.trim();
+  const ageInput = document.getElementById("age").value.trim();
+  const age = parseInt(ageInput);
 
-  if (name === "" || age === "") {
+  // Check for empty or invalid inputs
+  if (name === "" || ageInput === "" || isNaN(age)) {
     alert("Please enter valid details.");
     return;
   }
 
-  const ageNumber = parseInt(age);
-
+  // Promise logic
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (ageNumber > 18) {
+      if (age > 18) {
         resolve();
       } else {
         reject();
