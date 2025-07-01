@@ -1,10 +1,10 @@
 document.getElementById("votingForm").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent default form submission
 
-  const name = document.getElementById("name").value;
-  const age = document.getElementById("age").value;
+  const name = document.getElementById("name").value.trim();
+  const age = document.getElementById("age").value.trim();
 
-  if (name.trim() === "" || age.trim() === "") {
+  if (name === "" || age === "") {
     alert("Please enter valid details.");
     return;
   }
@@ -13,7 +13,7 @@ document.getElementById("votingForm").addEventListener("submit", function (e) {
 
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (ageNumber >= 18) {
+      if (ageNumber > 18) {
         resolve();
       } else {
         reject();
